@@ -28,7 +28,8 @@ const frontQ = () => {
 
 const size = () => {
     console.log('Size of MyQueue : ', MyQueue.length);
-    return MyQueue.length;
+    // return MyQueue.length;
+    return (rear - front);
 }
 
 
