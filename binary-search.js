@@ -40,7 +40,9 @@ const linearSearchAlogrithmForLoop = async function (searchElement, arr) {
     return false;
 }
 
-const searchItem = 99999999;
+
+
+const searchItem = 999999;
 const start = async function () {
     try {
         const result = await elementFactory();
@@ -54,7 +56,7 @@ const start = async function () {
         } else {
             console.log('NOT FOUND Time BY Binary Search : ', et - st);
         }
-        
+
         const stl = new Date().getMilliseconds();
         const Lfound = await linearSearchAlogrithm(searchItem, result);
         const etl = new Date().getMilliseconds();
@@ -72,6 +74,8 @@ const start = async function () {
         } else {
             console.log('NOT FOUND Time BY Linear Search For loop: ', etfl - stfl);
         }
+
+    
 
 
     } catch (error) {
