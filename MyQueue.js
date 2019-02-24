@@ -11,7 +11,7 @@ const enQueue = (element) => {
 }
 
 const deQueue = () => {
-    if (front === rear) {
+    if (isEmpty()) {
         console.log('Myqueue is underflow.');
     } else {
         console.log(MyQueue[front]);
@@ -20,8 +20,30 @@ const deQueue = () => {
     }
 }
 
+const frontQ = () => {
+    console.log('Front element of MyQueue : ', MyQueue[front]);
+    return MyQueue[front];
+}
+
+
+const size = () => {
+    console.log('Size of MyQueue : ', MyQueue.length);
+    return MyQueue.length;
+}
+
+
+
+const isEmpty = () => {
+    if (front === rear) {
+        return true;
+    }
+    return false;
+}
 
 module.exports = {
     enQueue: enQueue,
-    deQueue: deQueue
+    deQueue: deQueue,
+    frontQ: frontQ,
+    size: size,
+    isEmpty: isEmpty
 }
