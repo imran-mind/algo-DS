@@ -1,0 +1,20 @@
+/* 
+    This is paragraph and div css
+*/
+p,div{
+    color: red;
+    text-align: center
+}
+body{
+    background-color: powderblue
+}
+
+#h1 {
+    color: orange;
+    text-align: center
+}
+
+p.para1 {
+    color: blueviolet;
+    text-align: center
+}
