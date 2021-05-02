@@ -26,3 +26,23 @@ for(let i=0; i<arr.length; i++){
 }
 
 console.log(root);
+
+const display = (root) =>{
+    let str = root.data+"=>";
+    let len = root.children.length;
+    root.children.forEach((node,index)=>{
+        let comma = ",";
+        if(len-1 === index){
+            comma = "";
+        }
+        str += node.data+ comma;
+    });
+    // str+=".";
+    console.log(str);
+    root.children.forEach((node)=>{
+        display(node);
+    })
+
+}
+
+display(root);
