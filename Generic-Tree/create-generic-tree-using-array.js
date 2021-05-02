@@ -45,4 +45,16 @@ const display = (root) =>{
 
 }
 
+
+const size = (node) =>{
+    let s = 0;
+    node.children.forEach((item)=>{
+        let cs = size(item)
+        s = s + cs;
+    });
+    s = s +1;
+    return s;
+} 
+
 display(root);
+console.log('Size of a tree : '+size(root));
