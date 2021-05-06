@@ -161,6 +161,34 @@ const levelOrderNullApproach = (root)=>{
     }
     console.log(path);
 }
+
+
+
+const levelOrderCountApproach = (root) =>{
+    const q = [];
+    q.push(root);
+    let path = "";
+    while(q.length > 0){
+        let len = q.length;
+        for(let i=0; i<len; i++){
+            root = q.shift();
+            path = path + root.data+" ";
+            root.children.forEach(child=>{
+                q.push(child);
+            })
+        }
+        path = path + "\n";
+    }
+    console.log(path)
+}
+
+const mirrorTree = (root) =>{
+    root.children.forEach(child=>{
+        mirrorTree(child);
+    });
+    root.children.reverse();
+    // console.log('tree-> ',root)
+}
 // const eulerArr = [10,20,-1,30,-1,-1];
 const eulerArr = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
 const rootPath = createTree(eulerArr);
@@ -172,4 +200,6 @@ const rootPath = createTree(eulerArr);
 //levelOrder(rootPath)
 //levelOrderLinewise(rootPath);
 //levelOrderZigZag(rootPath);
+//levelOrderCountApproach(rootPath)
+//mirrorTree(rootPath);
 levelOrderNullApproach(rootPath);
