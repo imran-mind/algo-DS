@@ -138,6 +138,29 @@ const levelOrderZigZag = (root)=>{
     }
     console.log(path)
 }
+
+
+const levelOrderNullApproach = (root)=>{
+    const queue = [];
+    queue.push(root);
+    queue.push(null);
+    let path = "";
+    while(queue.length > 0){
+        root = queue.shift();
+        if(root != null){
+            path = path + root.data +" ";
+            root.children.forEach(child=>{
+                queue.push(child);
+            })            
+        }else{
+           if(queue.length > 0){
+                queue.push(null);
+                path = path + "\n";
+            }
+        }
+    }
+    console.log(path);
+}
 // const eulerArr = [10,20,-1,30,-1,-1];
 const eulerArr = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
 const rootPath = createTree(eulerArr);
@@ -147,5 +170,6 @@ const rootPath = createTree(eulerArr);
 //  console.log(height(rootPath))
 // traversal(rootPath);
 //levelOrder(rootPath)
-levelOrderLinewise(rootPath);
-levelOrderZigZag(rootPath);
+//levelOrderLinewise(rootPath);
+//levelOrderZigZag(rootPath);
+levelOrderNullApproach(rootPath);
