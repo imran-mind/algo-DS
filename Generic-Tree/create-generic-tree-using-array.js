@@ -107,6 +107,37 @@ const levelOrderLinewise = (root)=>{
     }
     console.log(level);
 }
+
+
+const levelOrderZigZag = (root)=>{
+    let ms = [];
+    let cs = [];
+    ms.push(root);
+    let path = "";
+    let level = 1;
+    while(ms.length > 0){
+        root = ms.pop();
+        path = path + root.data+" ";
+
+        if(level % 2 === 0){
+            for(let i=root.children.length-1; i>=0; i--){
+                cs.push(root.children[i])
+            }
+        }else{
+             for(let i=0; i<root.children.length; i++){
+                cs.push(root.children[i])
+            }
+        }
+        if(ms.length === 0){
+            path = path + "\n";
+            ms = cs;
+            cs = [];
+            level++;
+        }
+        
+    }
+    console.log(path)
+}
 // const eulerArr = [10,20,-1,30,-1,-1];
 const eulerArr = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
 const rootPath = createTree(eulerArr);
@@ -116,4 +147,5 @@ const rootPath = createTree(eulerArr);
 //  console.log(height(rootPath))
 // traversal(rootPath);
 //levelOrder(rootPath)
-levelOrderLinewise(rootPath)
+levelOrderLinewise(rootPath);
+levelOrderZigZag(rootPath);
