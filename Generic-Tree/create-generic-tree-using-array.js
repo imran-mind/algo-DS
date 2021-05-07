@@ -218,6 +218,26 @@ const findElement = (node,item) =>{
     }
     return false;
 }
+
+
+const nodeToRootPath = (node,data) =>{
+    if(node.data === data){
+        let list = [];
+        list.push(node.data);
+        return list;
+    }
+
+   for(let i=0; i<node.children.length; i++){
+        const items = nodeToRootPath(node.children[i], data);
+        if(items.length > 0){
+            items.push(node.data);
+            return items;
+        }
+    }
+    return [];
+}
+
+
 // const eulerArr = [10,20,-1,30,-1,-1];
 const eulerArr = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
 const rootPath = createTree(eulerArr);
@@ -233,4 +253,5 @@ const rootPath = createTree(eulerArr);
 //mirrorTree(rootPath);
 //levelOrderNullApproach(rootPath);
 //removeLeaf(rootPath);
-findElement(rootPath,30);
+//findElement(rootPath,30);
+console.log(nodeToRootPath(rootPath,30))
