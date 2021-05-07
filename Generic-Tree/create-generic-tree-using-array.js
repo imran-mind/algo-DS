@@ -289,6 +289,29 @@ const areSimiler = (n1 , n2) =>{
     return true;
 }
 
+
+let treeSize = 0;
+let min = Number.MAX_VALUE;
+let max = Number.MIN_VALUE;
+let treeHeight = 0;
+const multisolver = (node,depth) =>{
+    treeSize++;
+    min = Math.min(min,node.data);
+    max = Math.max(max,node.data);
+    treeHeight = Math.max(treeHeight,depth);
+
+    for(let i = 0; i < node.children.length; i++){
+        multisolver(node.children[i],depth+1);
+    }
+}
+setTimeout(()=>{
+    console.log('Tree Size => ',treeSize);
+    console.log('Tree min => ',min);
+    console.log('Tree max => ',max);
+    console.log('Tree height => ',treeHeight);
+},0)
+
+
 const arr1 = [10,20,-1,30,-1,-1];
 const arr2 = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
 const rootPath = createTree(arr1);
@@ -309,4 +332,5 @@ const rootPath2 = createTree(arr2);
 //console.log(nodeToRootPath(rootPath,30))
 //console.log(lowestCommonAncestor(rootPath,20,30))
 //console.log(distanceBetweenNodes(rootPath,10,40))
-console.log(areSimiler(rootPath,rootPath))
+//console.log(areSimiler(rootPath,rootPath))
+multisolver(rootPath2,0);
