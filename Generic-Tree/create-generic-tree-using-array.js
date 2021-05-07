@@ -203,6 +203,21 @@ const removeLeaf = (node) =>{
     })
     console.log(node)
 }
+
+
+const findElement = (node,item) =>{
+    if(node.data === item){
+        //  console.log(node)
+        return true;
+    }
+    for(let i=0; i<node.children.length; i++){
+        const found = findElement(node.children[i],item);
+        if(found){
+            return true;
+        }
+    }
+    return false;
+}
 // const eulerArr = [10,20,-1,30,-1,-1];
 const eulerArr = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
 const rootPath = createTree(eulerArr);
@@ -217,4 +232,5 @@ const rootPath = createTree(eulerArr);
 //levelOrderCountApproach(rootPath)
 //mirrorTree(rootPath);
 //levelOrderNullApproach(rootPath);
-removeLeaf(rootPath);
+//removeLeaf(rootPath);
+findElement(rootPath,30);
