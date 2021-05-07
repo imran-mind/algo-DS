@@ -189,6 +189,20 @@ const mirrorTree = (root) =>{
     root.children.reverse();
     // console.log('tree-> ',root)
 }
+
+
+const removeLeaf = (node) =>{
+    for(let i=node.children.length-1; i>=0; i--){
+        const childItem = node.children[i];
+        if(childItem.children.length === 0){
+            node.children.splice(i,1);
+        }
+    }
+    node.children.forEach(child=>{
+        removeLeaf(child);
+    })
+    console.log(node)
+}
 // const eulerArr = [10,20,-1,30,-1,-1];
 const eulerArr = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
 const rootPath = createTree(eulerArr);
@@ -202,4 +216,5 @@ const rootPath = createTree(eulerArr);
 //levelOrderZigZag(rootPath);
 //levelOrderCountApproach(rootPath)
 //mirrorTree(rootPath);
-levelOrderNullApproach(rootPath);
+//levelOrderNullApproach(rootPath);
+removeLeaf(rootPath);
