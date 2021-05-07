@@ -274,9 +274,25 @@ const distanceBetweenNodes = (node, t1,t2) =>{
     return i + j;
 }
 
-// const eulerArr = [10,20,-1,30,-1,-1];
-const eulerArr = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
-const rootPath = createTree(eulerArr);
+
+const areSimiler = (n1 , n2) =>{
+    if(n1.children.length !== n2.children.length){
+        return false;
+    }
+    for(let i=0; i < n1.children.length; i++){
+        const c1 = n1.children[i];
+        const c2 = n2.children[i];
+        if(!areSimiler(c1,c2)){
+            return false;
+        }
+    }
+    return true;
+}
+
+const arr1 = [10,20,-1,30,-1,-1];
+const arr2 = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
+const rootPath = createTree(arr1);
+const rootPath2 = createTree(arr2);
 // display(rootPath);
 // console.log(size(rootPath))
 // console.log(maxVal(rootPath))
@@ -292,6 +308,5 @@ const rootPath = createTree(eulerArr);
 //findElement(rootPath,30);
 //console.log(nodeToRootPath(rootPath,30))
 //console.log(lowestCommonAncestor(rootPath,20,30))
-console.log(distanceBetweenNodes(rootPath,10,40))
-
-
+//console.log(distanceBetweenNodes(rootPath,10,40))
+console.log(areSimiler(rootPath,rootPath))
