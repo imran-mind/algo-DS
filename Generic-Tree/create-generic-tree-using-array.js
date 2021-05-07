@@ -238,6 +238,42 @@ const nodeToRootPath = (node,data) =>{
 }
 
 
+
+const lowestCommonAncestor = (node, t1,t2) =>{
+    const p1 = nodeToRootPath(node,t1);
+    const p2 = nodeToRootPath(node,t2);
+
+    let i = p1.length - 1;
+    let j = p2.length - 1;
+
+    while(i >= 0 && j >= 0 && p1[i] === p2[j]){
+        i --;
+        j --;
+    }
+
+    i++;
+    j++;
+    return p1[i];
+}
+
+
+
+const distanceBetweenNodes = (node, t1,t2) =>{
+    const p1 = nodeToRootPath(node,t1);
+    const p2 = nodeToRootPath(node,t2);
+
+    let i = p1.length - 1;
+    let j = p2.length - 1;
+
+    while(i >= 0 && j >= 0 && p1[i] === p2[j]){
+        i --;
+        j --;
+    }
+    i++;
+    j++;
+    return i + j;
+}
+
 // const eulerArr = [10,20,-1,30,-1,-1];
 const eulerArr = [10,20,40,-1,50,-1,-1,30,60,-1,70,-1,-1,-1];
 const rootPath = createTree(eulerArr);
@@ -254,4 +290,8 @@ const rootPath = createTree(eulerArr);
 //levelOrderNullApproach(rootPath);
 //removeLeaf(rootPath);
 //findElement(rootPath,30);
-console.log(nodeToRootPath(rootPath,30))
+//console.log(nodeToRootPath(rootPath,30))
+//console.log(lowestCommonAncestor(rootPath,20,30))
+console.log(distanceBetweenNodes(rootPath,10,40))
+
+
