@@ -55,7 +55,7 @@ const createBinaryTree = (arr) =>{
     return root;
 }
 const display = (node) =>{
-    if(node===null) return;
+    if(node===null) return;z
     let str = "";
     str += node.left === null ? "." : node.left.data +"";
     str += " <- "+node.data+" -> ";
@@ -66,8 +66,17 @@ const display = (node) =>{
     display(node.right);
 }
 
+const traversal = (node) =>{
+    if(node===null) return;
+    console.log("PRE=>"+node.data)
+    traversal(node.left);
+    console.log("IN=>"+node.data)
+    traversal(node.right);
+    console.log("POST=>"+node.data)
+}
 
 const eulerArr =[50,25,12,null,null,37,30,null,null,null,75,62,null,70,null,null,87,null,null]
 const binaryTree =  createBinaryTree(eulerArr);
 console.log(JSON.stringify(binaryTree));
-display(binaryTree);
+// display(binaryTree);
+traversal(binaryTree)
