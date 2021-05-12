@@ -75,8 +75,69 @@ const traversal = (node) =>{
     console.log("POST=>"+node.data)
 }
 
+
+const levelOrderTraversal = (node) =>{
+    const queue = [];
+    queue.push(node);
+    let path ="";
+    while(queue.length > 0 ){
+        const count = queue.length;
+        for(let i = 0; i < count; i++){
+            node = queue.shift();
+            path += node.data+" ";
+
+            if(node.left){
+                queue.push(node.left);
+            }
+            if(node.right){
+                queue.push(node.right);
+            }
+        }
+        path += "\n";
+    }
+    console.log(path);
+}
+
+const iterativePrePostInTraversal = (node) =>{
+    const stack = [];
+    const rtp = new Pair(node,1);
+    stack.push(rtp);
+    let pre ="";
+    let ino = "";
+    let post = "";
+
+    while(stack.length > 0){
+        const top = stack[stack.length - 1];
+        if(top.state === 1){ // pre state ++ , goto left
+            pre += top.node.data + " ";
+            top.state ++;
+
+            if(top.node.left){
+                const lp = new Pair(top.node.left,1);
+                stack.push(lp);
+            }
+        }else if(top.state === 2){ // InOrder state ++, goto right
+            ino += top.node.data + " ";
+            top.state ++;
+            if(top.node.right){
+                const rp = new Pair(top.node.right,1);
+                stack.push(rp);
+            }
+        }else{  //post , pop
+            post += top.node.data + " ";
+            stack.pop();
+        }
+    }
+    console.log('Pre => ',pre)
+    console.log('InO => ',ino)
+    console.log('Post => ',post)
+}
+
+
 const eulerArr =[50,25,12,null,null,37,30,null,null,null,75,62,null,70,null,null,87,null,null]
 const binaryTree =  createBinaryTree(eulerArr);
-console.log(JSON.stringify(binaryTree));
+// console.log(JSON.stringify(binaryTree));
 // display(binaryTree);
-traversal(binaryTree)
+// traversal(binaryTree)
+// levelOrderTraversal(binaryTree);
+iterativePrePostInTraversal(binaryTree)
