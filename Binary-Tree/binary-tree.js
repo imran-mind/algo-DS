@@ -111,7 +111,6 @@ const iterativePrePostInTraversal = (node) =>{
         if(top.state === 1){ // pre state ++ , goto left
             pre += top.node.data + " ";
             top.state ++;
-
             if(top.node.left){
                 const lp = new Pair(top.node.left,1);
                 stack.push(lp);
@@ -132,6 +131,38 @@ const iterativePrePostInTraversal = (node) =>{
     console.log('InO => ',ino)
     console.log('Post => ',post)
 }
+const rootPath = [];
+const findNodeAndRootToPath = (node, data)=>{
+    if(node === null) return false;
+
+    if(node.data === data){
+        rootPath.push(node.data);
+        return true
+    };
+
+    const filc = findNodeAndRootToPath(node.left, data);
+    if(filc) {
+        rootPath.push(node.data);
+        return true;
+    }
+
+    const firc = findNodeAndRootToPath(node.right, data);
+    if(firc){
+        rootPath.push(node.data);
+        return true;
+    }
+    return false;
+}
+
+const printKLevelDown = (node,k) =>{
+    if(node === null || k < 0) return;
+
+    if(k === 0){
+        console.log(node.data+" ");
+    }
+    printKLevelDown(node.left,k-1);
+    printKLevelDown(node.right,k-1);
+}
 
 
 const eulerArr =[50,25,12,null,null,37,30,null,null,null,75,62,null,70,null,null,87,null,null]
@@ -140,4 +171,7 @@ const binaryTree =  createBinaryTree(eulerArr);
 // display(binaryTree);
 // traversal(binaryTree)
 // levelOrderTraversal(binaryTree);
-iterativePrePostInTraversal(binaryTree)
+// iterativePrePostInTraversal(binaryTree)
+// console.log(findNodeAndRootToPath(binaryTree,70));
+// console.log(rootPath);
+printKLevelDown(binaryTree,0);
