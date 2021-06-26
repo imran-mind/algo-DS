@@ -4,7 +4,13 @@
 - How do you check if two strings are anagrams of each other?
 - How do you print the first non-repeated character from a string?
 - How can a given string be reversed using recursion?
+```
+const a = 10;
 
+function getMinMax(arr){
+  
+}
+```
 ```javascrit
 const reverseRecursive = (str) =>{
     if(str == ""){
