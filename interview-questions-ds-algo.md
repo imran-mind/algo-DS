@@ -5,7 +5,7 @@
 - How do you print the first non-repeated character from a string?
 - How can a given string be reversed using recursion?
 
-```
+```javascrit
 const reverseRecursive = (str) =>{
     if(str == ""){
         return "";
