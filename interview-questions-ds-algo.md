@@ -4,6 +4,19 @@
 - How do you check if two strings are anagrams of each other?
 - How do you print the first non-repeated character from a string?
 - How can a given string be reversed using recursion?
+
+```
+const reverseRecursive = (str) =>{
+    if(str == ""){
+        return "";
+    }
+    let rev =  reverseRecursive(str.substr(1));
+    //console.log(rev,str)
+    return rev + str[0];
+}
+
+console.log(reverseRecursive('hello'));
+```
 - How do you check if a string contains only digits?
 - How are duplicate characters found in a string?
 - How do you count the number of vowels and consonants in a given string?
