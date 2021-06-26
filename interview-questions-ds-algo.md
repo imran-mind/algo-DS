@@ -1,16 +1,82 @@
 ## STRING 
 
 - How do you print duplicate characters from a string?
+```
+const mapString = (s)=>{
+    const map = {};
+    s.forEach(i => {
+        map[i] = map[i] + 1 || 1;
+    });
+    console.log(map);
+    return map;
+}
+
+const findDuplicate = (arr) =>{
+    const map = mapString(arr);
+    for(const c in map){
+        if(map[c] > 1){
+            console.log(c)
+            return c;
+        }
+    }
+}
+
+```
 - How do you check if two strings are anagrams of each other?
+```
+
+const charCount = (s)=>{
+    const map = {};
+    const s1 = s.trim().toLowerCase();
+    for(const element of s1){
+        map[element] = map[element] + 1 || 1;
+    }
+    return map;
+}
+
+const anagram = (s1,s2) =>{
+    const charObj1 = charCount(s1);
+    const charObj2 =  charCount(s2);
+    if(Object.keys(charObj1).length !== Object.keys(charObj2).length){
+        return false;
+    }
+    for(const ch in charObj1){
+        if(charObj1[ch] !== charObj2[ch]){
+            return false;
+        }
+    }
+    return true;
+}
+
+const sort = (s)=> s.toLowerCase().split('').sort().join("");
+const anagramWithSorting = (s1, s2) =>{
+    return sort(s1) === sort(s2);
+}
+
+const isAnagram = (s1,s2)=>{
+    if(s1.length !== s2.length)
+        return false;
+    const obj = charCount(s1);
+    for(const c of s2){
+        if(obj[c]){
+            obj[c]--;
+        }
+    }
+    const vals = Object.values(obj);
+    for(let i=0; i<vals.length; i++){
+        if(vals[i] !==0)
+            return false;
+    }
+    return true;
+    // console.log(obj)
+}
+
+// console.log(anagram("hello world" ,"world hello"));
+// console.log(anagramWithSorting("hello world" ,"world hello"));
+console.log(isAnagram("hello" ,"llhe"));
+```
 - How do you print the first non-repeated character from a string?
 - How can a given string be reversed using recursion?
-```
-const a = 10;
-
-function getMinMax(arr){
-  
-}
-```
 ```javascrit
 const reverseRecursive = (str) =>{
     if(str == ""){
@@ -20,7 +86,6 @@ const reverseRecursive = (str) =>{
     //console.log(rev,str)
     return rev + str[0];
 }
-
 console.log(reverseRecursive('hello'));
 ```
 - How do you check if a string contains only digits?
