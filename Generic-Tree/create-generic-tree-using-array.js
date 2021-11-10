@@ -6,6 +6,7 @@ class TreeNode {
 }
 
 const createTree = (arr) =>{
+    console.log("createTree");
     let stack = [];
     let root = new TreeNode(null);
     arr.forEach((item)=>{
