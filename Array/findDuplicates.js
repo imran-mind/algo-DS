@@ -2,4 +2,4 @@ function findDuplicate(){
 
 }
 
-findDuplicate()
+findDuplicate();
