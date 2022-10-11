@@ -5,3 +5,4 @@ MyQueue.enQueue(14);
 MyQueue.deQueue();
 MyQueue.frontQ();
 MyQueue.size();
+MyQueue.size();
