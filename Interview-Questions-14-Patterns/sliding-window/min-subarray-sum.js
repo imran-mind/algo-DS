@@ -11,7 +11,7 @@ const findSubarraySum = (arr, targetSum)=>{
         }
         for(let j=i+1; j<n; j++){
             currSum = currSum + arr[j];
-            if(currSum === targetSum){
+            if(currSum >= targetSum){
                 const len = j-i+1;
                 minLen = Math.min(len, minLen);
             }
@@ -28,35 +28,30 @@ const findSubarraySum = (arr, targetSum)=>{
 
 
 //so we can improve the TC with the sliding window technique
-
-const minSubArraySumSlidingWindow = (arr, targetSum) =>{
-    const n = arr.length;
+var minSubArrayLen = function(target, nums) {
+    if(!nums || nums.length === 0)
+        return 0;
+    const n = nums.length;
     let start = 0;
-    let end;
-    let currSum = arr[0];
-    let minLen = Number.MAX_VALUE;
-    //pick the starting point
-    for(end = 1; end<=n; end ++){
-        //if currSum exceeds the sum, then remove the starting element
-        while(currSum > targetSum){
-            currSum = currSum - arr[start];
+    let end = 0;
+    let sum = 0;
+    let min = Number.MAX_VALUE;
+    
+    while(end < n){
+        sum = sum + nums[end];
+        end++;
+        
+        while(sum>=target){
+            min = Math.min(min, end-start);
+            sum = sum - nums[start];
             start++;
         }
-        if(currSum === targetSum){
-            let newEnd = end - 1;
-            minLen = Math.min(minLen, newEnd - start + 1);
-            console.log('len -> ',start, ' ', newEnd);
-        }
-        if(end < n){
-            currSum = currSum + arr[end];
-        }
     }
-    console.log('minLen ',minLen);
-}
-
+    return min === Number.MAX_VALUE ? 0 : min;
+};
 
 
 const arr = [15, 2, 4, 8, 9, 5, 3, 20 , 19, 2, 2 ];
 const sum = 23;
 
-minSubArraySumSlidingWindow(arr, sum);
+minSubArrayLen(arr, sum);
