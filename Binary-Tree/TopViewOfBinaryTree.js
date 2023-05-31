@@ -70,3 +70,11 @@ root.right = node3;
 
 const res = topViewOfBinaryTree(root);
 console.log(res);
+
+// for example 
+//         5
+//       /   \
+//     2      12
+//   /  \     / \
+// 1     3   9   21
+// [1,2,5,12,21]
